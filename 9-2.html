@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document9-2</title>
+    <script>
+        //物件初始化
+        let objPerson = {
+            name: "Bill",
+            age: 25,
+            hairColor: 'black',
+            skinColor: 'beige'
+        };
+
+
+        objPerson.hadShoes = true;
+        objPerson.isWoken = true;
+
+
+        objPerson.age = 26;
+
+        delete objPerson.skinColor;
+
+        console.log(objPerson);
+
+        //將物件轉為Json
+        let strJson = JSON.stringify(objPerson);
+        console.log(`轉為json的樣子:${strJson}`);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

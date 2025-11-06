@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document8-1</title>
+    <script>
+        // let arr = [];
+        // //let arr = new Array();
+        //一般來說，陣列的索引，從[0]開始，到[n-1]結束。
+        let arr = [
+            'Alex',
+            'Bill',
+            'Cook',
+            'Darren',
+        ];
+
+        console.log(arr[0]);
+        console.log(arr[3]);
+        console.log(arr[4]); // Undefiend 還沒有被初始化 在javascript 式Undefiend
+        // 使用for 迴圈指定 index 來取得 arr當中的值
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i]);
+        }
+
+        // 如果i小於arr的長度(4!!!!!)的話 就執行，然後i+1
+
+
+        for (let name of arr) {
+            console.log(name);
+        }
+
+
+        //Array 可以用 of or in
+        // obj 只能用 in
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

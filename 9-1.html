@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document9-1</title>
+    <script>
+        let str = `
+        {
+        "firstName": "Darren",
+        "lastName": "Yang",
+        "gender": "male",
+        "age": 18,
+        "address": 
+        {
+            "streetAddress": "台北市復興南路一段390號2樓、3樓",
+            "city": "Taipei"
+        },
+        "phoneNumber": 
+        [
+            {
+                "type": "office",
+                "number": "6631-6666"
+            },
+            {
+                "type": "fax",
+                "number": "6631-6598"
+            }
+        ]
+    }`;
+        //將 json轉換成物件
+        let obj = JSON.parse(str);
+        // console.log(obj)
+        // 讀取obj 物件屬性 firstName
+        console.log(obj['firstName'])
+        //讀取 obg 物件屬性 address裡面的物件屬性 streerAddress
+        // console.log(obj['address']['streetAddress']) // 透過中括號[]拿底下的key取得對應的值
+
+        //使用for 迴圈指定index來取得arr當中的值
+        for (let i = 0; i < obj['phoneNumber'].length; i++) {
+            console.log("==================");
+            console.log(obj['phoneNumber'][i]['type']);
+            console.log(obj['phoneNumber'][i]['number']);
+        }
+
+        for (let o of obj['phoneNumber']) {
+            // console.log(o) --- o是兩個obj
+            console.log('=====')
+            console.log(o['type']);
+            console.log(o['number']);
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

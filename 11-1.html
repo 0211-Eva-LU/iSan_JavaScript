@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document11-1</title>
+    <script>
+        // let date = new Date();
+        // let strTime = '';
+        // strTime += date.getFullYear();
+        // strTime += date.getMonth() + 1;
+        // strTime += date.getDate();
+        // strTime += date.getHours();
+        // strTime += date.getMinutes();
+        // strTime += date.getSeconds();
+
+        // console.log(strTime);
+
+
+        let date = new Date();
+        let year, month, day, hour, minute, second;
+
+        year = date.getFullYear();
+
+        month = date.getMonth() + 1;
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        day = date.getDate();
+        if (day < 10) {
+            day = '0' + day;
+        }
+
+        hour = date.getHours();
+        if (hour < 10) {
+            hour = '0' + hour;
+        }
+
+        minute = date.getMinutes();
+        if (minute < 10) {
+            minute = '0' + minute;
+        }
+
+
+        second = date.getSeconds();
+        if (second < 10) {
+            second = '0' + second;
+        }
+
+
+        console.log(`${year}-${month}-${day} ${hour}:${minute}:${second}`);
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

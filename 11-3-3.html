@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document11-3-3</title>
+</head>
+
+<body>
+
+    <button onclick="startCount()" id="btn_start">開始累加</button>
+    <input type="text" id="txt" value="">
+    <button onclick="stopCount()" id="btn_stop">結束累加</button>
+
+
+    <script>
+        //累加數字的變數
+        let count = 0
+
+
+        // 作為clearInterval()用的變數
+        let instanceId;
+
+
+        //累加用的函式
+        function countNum() {
+            //將當前count 值 ,放到id = txt 的元素 value屬性中
+
+            document.querySelector('input#txt').value = count;
+            //進行數字累加
+            count = count + 1;
+        }
+
+        //開始累加
+
+        function startCount() {
+            instanceId = setInterval(function () { countNum() }, 1000);
+
+
+            document.querySelector('button#btn_start').setAttribute('disabled', '');
+            document.querySelector('button#btn_start').setAttribute('data-full-name', 'darrenyang');
+
+
+            document.querySelector('button#btn_stop').removeAttribute('disabled');
+
+        }
+
+
+        //結束累加
+
+        function stopCount() {
+            //結束 SetInterval
+
+            clearInterval(instanceId);
+
+            //將開始按鈕移除 disable 屬性
+            document.querySelector('button#btn_start').removeAttribute('disabled');
+
+            //將結束按鈕增加disable屬性
+
+            document.querySelector('button#btn_stop').setAttribute("disabled", "");
+        }
+
+    </script>
+
+</body>
+
+</html>

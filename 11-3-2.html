@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+</head>
+
+<body>
+    <input type="text" id="txt" value="">
+    <button onclick="stopCount()" id="btn_stop">結束累加</button>
+    <!-- //針對元素註冊click事件 -->
+
+
+
+    <script>
+
+        let count = 0;
+        let instanceId;
+
+        instanceId = setInterval(function () {
+            document.querySelector('input#txt').value = count;
+            count++;
+            // input元素id txt
+
+        }, 1000);
+        function stopCount() {
+            clearInterval(instanceId);
+        } //按下去的時候把setInterval的功能停掉。
+
+    </script>
+</body>
+
+</html>

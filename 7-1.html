@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document7-1</title>
+    <script>
+        // let obj = {} ;
+        // let obj =new Object();
+        let cat = {
+            legs: 4,
+            name: 'Doraemon',
+            color: 'blue',
+        };
+
+        //使用「［　］」來存取屬性
+        console.log(`幾隻腿${cat['legs']}`);
+        console.log(cat['name']);
+
+        //使用[.]來存取屬性或函式
+        console.log(cat.legs); // 輸出 4
+        console.log(cat.color); //輸出blue
+
+        //增加物件屬性
+        cat['eye_color'] = 'black';
+        cat.habbit = 'plays with Nobita';
+
+        //輸出物件內容
+        console.log(cat);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document7-2</title>
+    <script>
+        let obj = {
+            fname: 'Darren',
+            lname: 'Yang',
+            age: null,
+            lineId: 'telunyang'
+        };
+
+        for (let attr in obj) {
+            console.log(attr);
+        } //顯示obj所有的key
+
+        for (let attr in obj) {
+            console.log(attr, obj[attr]);
+        } //顯示obj所有的值
+
+
+        console.log(Object.keys(obj)); // KEY
+        console.log(Object.values(obj)); //VALUES
+        console.log(Object.entries(obj)); // KEY & VALUE
+        //直接用list傳回來 (陣列)
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

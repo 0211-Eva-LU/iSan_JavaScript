@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document10-1</title>
+    <script>
+
+        //建立函式適用function開頭 小括號()傳遞資料用
+        function say() {
+            console.log('Hello Word!');
+        }
+
+        // say()
+        // say()
+        // say()
+
+        function greet01(greeting, name) {
+            console.log(greeting + ', ' + name);
+        }
+        //執行函式
+        greet01('HI', 'Eva')
+
+        //回傳值,拿到外面做使用
+        function getMassage01() {
+            return 'Good Job!';
+        }
+
+        console.log(getMassage01()); //執行結果
+
+
+
+        function getMassage02(name) {
+            return 'Good Job!' + name;
+        }
+
+        console.log(getMassage02('Bob'))
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

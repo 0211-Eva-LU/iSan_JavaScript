@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document10-5</title>
+    <script>
+        console.log(Math.random());
+        console.log(Math.random());
+        console.log(Math.random());
+        console.log(Math.random());
+
+        let arrMeal = ['麥當勞', '肯德基', '摩斯漢堡', '頂呱呱', '漢堡王'];
+        /// 回傳不大於x整數(無條件捨去 所以最大只有4) 只有random是亂數 /長度是5 但是號碼只到4 
+        let idxRandom = Math.floor(Math.random() * arrMeal.length);
+
+        document.write(`我可以選擇的餐廳有: <br />`);
+        for (let i = 0; i < arrMeal.length; i++) {
+            document.write('' + arrMeal[i] + '<br />')
+        }
+
+        document.write(`我今天中餐，我選擇 ${arrMeal[idxRandom]}`);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

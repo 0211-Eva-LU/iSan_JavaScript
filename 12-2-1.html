@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document12-2-1</title>
+    <script>
+        let strBrowser = " ";
+        let strUsrAg = window.navigator.userAgent;
+
+        document.write(strUsrAg);
+        document.write('<hr >');
+
+        if (strUsrAg.indexOf('Mobile') > -1) {
+            strBrowser = '手機瀏覽器';
+        } else {
+            strBrowser = '個人電腦(桌機)的瀏覽器';
+        }
+        document.write('您正在使:' + strBrowser);
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let condition = false;
+        if (condition) {
+            //若條件為真，則執行這個區塊的程式碼
+            // 作用區域要用大括號{}還區隔
+            console.log('Hello Word!');
+            document.write('Hello Word!'); //直接在body裡寫成文字
+        } else {
+            //若條件為假，則執行這區塊的區域的程式碼
+            console.log('May you have a nice day !');
+            document.write('May you have a nice day!'); //直接在body裡寫成文字
+        }
+        // 在 JavaScript（以及許多 C 類語言中，例如 C、Java、C++）裡，大括號 {} 不是一個「語句（statement）」結束符號，而是一種「程式碼區塊（block）」的語法結構。
+        // 因此，大括號後面 不需要、也不應該加分號。
+
+
+        let number = 7;
+        if (number > 10) {
+            console.log(1);
+
+        } else if (number === 7) {
+            console.log(2); //已經對了就不會往下執行
+        } else if (number > 5) {
+            console.log(3);
+        } else if (number === 6) {
+            console.log(4);
+        } else {
+            console.log('Not found');
+        }
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

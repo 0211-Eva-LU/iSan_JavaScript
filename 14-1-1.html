@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document 14-1-1</title>
+</head>
+
+<body>
+
+
+    <script>
+        //建立新的div
+        let newDiv = document.createElement('div');
+        newDiv.id = 'myNewDiv';
+        newDiv.className = 'box';
+        // newDiv.setAttribute('class','box'); 有寫一定
+
+
+        //建立文字節點
+        let textNode = document.createTextNode('hello Word!');
+
+        //把文字放入div
+        newDiv.appendChild(textNode);
+
+        //文字放入網頁
+        document.body.appendChild(newDiv);
+    </script>
+</body>
+
+</html>

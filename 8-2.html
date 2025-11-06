@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document8-2</title>
+
+    <script>
+        //初始化陣列
+        let listOfName = ['Alex', 'Bill', 'Cook', 'Darren'];
+        // 新增元素:
+        listOfName[4] = 'Ellen'; //指定索引為至新增元素
+        console.log(listOfName);
+        //輸出Alex ~ Ellen 長度變5
+
+
+        //使用.push()將資料加到陣列尾端，資料可一個以上:
+        listOfName.push('Fox', 'Gina');
+        console.log(listOfName)
+
+        //修改元素
+        listOfName[0] = 'Allen';
+        listOfName[2] = 'Carl';
+        console.log(listOfName[0]); // 輸出allen
+        console.log(listOfName[2]);
+        console.log(listOfName);
+
+        // 刪除尾端元素。使用.pop() 會刪除尾端的資料
+        listOfName.pop();
+        console.log(listOfName);
+
+        //刪除尾端元素;並取出放置在新的變數中
+        let name = listOfName.pop()
+        console.log(listOfName)
+        console.log(name) // fox跑到name裡了
+
+
+        //刪除陣列的一個元素，使用shift():
+        listOfName.shift();
+        console.log(listOfName);
+
+        //刪除這列的第一個元素，並取出放置新的變數中
+        name = listOfName.shift();
+        console.log(name);
+        console.log(listOfName);
+        // listOfName.push(name);
+        console.log(listOfName);
+
+
+        // 有時候從尾端刪除的陣列資料，需要放在陣列前端使用.ubshift():
+        name = listOfName.pop();
+        console.log(name)
+        listOfName.unshift(name)
+        console.log(listOfName)
+
+        //進階操作 從陣列中新增一個值目前剩下: Ellen,Carl,Darrenn
+        listOfName.splice(0, 0, 'Alex') //(索引為0的地方,刪除0筆資料,塞入''alex')
+        console.log(listOfName)
+
+
+        let arrRemoveValue = listOfName.splice(1, 2, 'Bill', 'Cook')
+        console.log(arrRemoveValue)
+        console.log(listOfName)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

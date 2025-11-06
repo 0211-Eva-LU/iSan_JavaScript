@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document11-3-1</title>
+    <script>
+        setTimeout(function () {
+            alert('Hello Word!');
+        }, 3000);// 3秒後觸發
+
+
+        // 自訂函釋後 使用setTimeout來調用自訂函式
+        function getMessage01() {
+            alert(`Good job!`);
+
+        }
+
+        setTimeout(getMessage01, 8000);
+
+        function getMessage02(greeting, name) {
+            alert(`${greeting},${name}`);
+        }
+
+        setTimeout(getMessage02, 13000, 'HI', 'Darren');
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

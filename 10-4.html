@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document10-4</title>
+    <script>
+        // 以funtion這個關鍵字的來建立類別(class)
+        let Person = function (name, gender, age) {
+            // 以this 關鍵字作為實體本身
+            this.name = name;
+            this.gender = gender;
+            this.age = age;
+            this.getAge = function () {
+                return this.age;
+            }
+        }
+
+        let person1 = new Person('Alice', '女', '22');
+        let person2 = new Person('Bill', '男', '18');
+
+        // 如果少了 new : this 不會指向新的物件，而是：
+
+        // 在「非嚴格模式」下 → 指向全域物件（window）
+
+        // 在「嚴格模式（'use strict'）」下 → 變成 undefined，造成錯誤
+
+        // 也就是說你不會得到一個新的 person 物件，而是污染全域變數
+
+        console.log(person1.name);
+        console.log(person2.name);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

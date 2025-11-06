@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document6-3-1</title>
+    <script>
+        // i 到 4的時候，跳出迴圈
+        for (let i = 1; i <= 9; i++) {
+
+            if (i == 4) {
+                break;
+            } //只有一個程式要執行 不一定要加 大括號
+            console.log(`i= ${i}`);
+        }
+
+
+        for (let i = 1; i <= 9; i++) {
+            for (let j = 1; j <= 9; j++) {
+                if (j == 4) {
+                    break;
+                }
+                console.log(`i=${i}, j = ${j}`)
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
