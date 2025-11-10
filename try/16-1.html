@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="url" placeholder="請輸入LINE官方貼圖" value="" style="width: 250px;">
+    <button id="btn_request">取得LINE官方貼圖</button>
+    <ul id="myList"></ul>
+
+    <script>
+        document.querySelector('button#btn_request').addEventListener('click', function (event) {
+            let url = document.querySelector('input#url').value;
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://127.0.0.1:5000/linestickers?url=' + url);
+            xhr.send();
+
+            xhr.onload = function () {
+
+                let obj = JSON.parse(this.responseText);
+                // console.log(this.responseText)
+                let ul = document.querySelector('ul#myList');
+
+                if (obj['success']) {
+                    for (let o of obj['results']) {
+                        let li = document.createElement('li');
+
+                        let img = document.createElement('img');
+                        img.src = o['staticUrl'];
+                        img.style = 'width:200px;';
+
+                        let a = document.createElement('a');
+                        a.href = o['staticUrl'];
+                        a.target = '_blank';
+
+                        let textNode = document.createTextNode(o['id']);
+                        a.appendChild(textNode);
+
+                        li.appendChild(img);
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    }
+                }
+
+            }
+        });
+
+
+    </script>
+
+</body>
+
+</html>

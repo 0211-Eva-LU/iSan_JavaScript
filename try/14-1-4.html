@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document14-1-2</title>
+</head>
+
+<body>
+    <ul id='myList'>
+        <li>Item 01</li>
+        <li>Item 02</li>
+        <li>Item 03</li>
+    </ul>
+
+    <script>
+        let mylist = document.querySelector('ul#myList');
+        let oldNode = document.querySelectorAll('li')[1];
+        let newNode = document.createElement('li');
+        let textNode = document.createTextNode('Hello Word!');
+        newNode.appendChild(textNode);
+        mylist.replaceChild(newNode, oldNode);
+    </script>
+</body>
+
+</html>

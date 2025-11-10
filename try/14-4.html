@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>請輸入 5 到 10 之間的數字</p>
+    <input id="demo" type="text">
+    <button type="button" id="btn_test">測試輸入</button>
+    <p id="p01"></p>
+    <script>
+
+        document.querySelector('button#btn_test').addEventListener('click', function (event) {
+            let message = document.getElementById('p01');
+            message.innerHTML = '';
+
+            let x = document.getElementById('demo').value;
+            try {
+                if (x == '') throw '欄位為空';
+                if (isNaN(x)) throw '不是數字';
+                x = Number(x);
+                if (x > 10) throw '超過10';
+                if (x < 5) throw '低於5'
+
+
+                alert('輸入正確!');
+
+            }
+            catch (errorMessage) {
+                message.innerHTML = '輸入錯誤:' + errorMessage;
+
+            } finally {
+                document.getElementById('demo').value = '';
+
+
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

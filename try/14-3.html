@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p style="color: #7878ff; line-height: 3; font-size: 30px;">Hello World<br />Good job!</p>
+
+    <script>
+
+        let p = document.querySelector('p');
+        document.write('<br />');
+        document.write(p.style.color + '<br />');
+        document.write(p.style.lineHeight + '<br />');
+        document.write(p.style.fontSize + '<br />');
+        p.style.color = '#ff0000';
+        p.style['font-size'] = '80px';
+        p.style['backgroundColor'] = '#CFEE99';
+    </script>
+
+</body>
+
+</html>

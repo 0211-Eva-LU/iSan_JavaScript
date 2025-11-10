@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document14-1-5</title>
+</head>
+
+<body>
+    <ul id='myList'>
+        <li>Item 01</li>
+        <li>Item 02</li>
+        <li>Item 03</li>
+    </ul>
+
+    <script>
+        let myList = document.querySelector('ul#myList');
+        let removeNode = document.querySelectorAll('li')[1];
+        myList.removeChild(removeNode);
+
+    </script>
+</body>
+
+</html>

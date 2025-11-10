@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="myForm" method="post" action="">
+        <lable>您的身分證字號：</lable>
+        <input type="text" id="idNum" value="" />
+        <input type="submit" id="btn" value="檢查" />
+    </form>
+
+    <script>
+
+        document.querySelector('input#btn').addEventListener
+            ('click', function (event) {
+                event.preventDefault();
+
+                let input = document.querySelector('input#idNum');
+                let re = /^[A-Z][12]\d{8}$/;
+
+                let match = null;
+                if (re.test(input.value)) {
+                    alert('身分證格式正確!');
+                }
+                else {
+                    alert('身分證格式錯誤!');
+                }
+
+
+            });
+
+
+    </script>
+
+</body>
+
+</html>
