@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>質數依序出現範例</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f3f7b3;
+            color: #6082c4;
+            text-align: center;
+        }
+
+        #prime-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .prime-box {
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid #38bdf8;
+            background: pink;
+            color: #fefce8;
+            /* 一出現就套這個動畫 */
+            animation: pop-in 0.4s ease-out;
+        }
+
+        /* 小小彈出的動畫 */
+        @keyframes pop-in {
+            0% {
+                transform: scale(0.3) translateY(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        button {
+            margin: 0 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: none;
+            background: #6082c4;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>求出 1–100 的質數（依序出現＋特效）</h1>
+
+    <div>
+        <button type="button" id="btn_start">開始顯示質數</button>
+        <button type="button" id="btn_reset">清除重新開始</button>
+    </div>
+
+    <div id="prime-container"></div>
+
+    <script>
+        // 判斷是否為質數
+        function isPrime(n) {
+            if (n < 2) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        // 先把 1–100 的質數存起來
+        const primes = [];
+        for (let n = 1; n <= 100; n++) {
+            if (isPrime(n)) {
+                primes.push(n);
+            }
+        }
+
+        const container = document.getElementById('prime-container');
+        const btnStart = document.getElementById('btn_start');
+        const btnReset = document.getElementById('btn_reset');
+
+        let index = 0;      // 目前顯示到第幾個質數
+        let timerId = null; // 計時器編號
+
+        // 顯示下一個質數
+        function showNextPrime() {
+            if (index >= primes.length) {
+                // 顯示完全部質數，就停止
+                clearInterval(timerId);
+                timerId = null;
+                btnStart.disabled = false;
+                return;
+            }
+
+            const span = document.createElement('span');
+            span.textContent = primes[index];
+            span.className = 'prime-box';
+            container.appendChild(span);
+
+            index++;
+        }
+
+        // 按「開始」：每 500ms 顯示一個質數
+        btnStart.addEventListener('click', function () {
+            if (timerId !== null) return; // 已經在跑就不再重複啟動
+
+            // 一開始就先顯示一個
+            showNextPrime();
+
+            // 之後每 500ms 顯示一個
+            timerId = setInterval(showNextPrime, 500);
+            btnStart.disabled = true; // 避免重複按
+        });
+
+        // 按「清除」：停止計時器，清空畫面，重頭來
+        btnReset.addEventListener('click', function () {
+            if (timerId !== null) {
+                clearInterval(timerId);
+                timerId = null;
+            }
+            container.innerHTML = '';
+            index = 0;
+            btnStart.disabled = false;
+        });
+    </script>
+</body>
+
+</html>

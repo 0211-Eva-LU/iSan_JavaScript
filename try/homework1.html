@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>質數跟著小人出現</title>
+
+    <!-- 引入 dotlottie Web Component（一定要有這段） -->
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.5/dist/dotlottie-wc.js" type="module">
+
+    </script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f3f7b3;
+            color: #6082c4;
+            text-align: center;
+        }
+
+        .stage {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            /* 先預留舞台大小，裡面會放人＋數字 */
+        }
+
+        /* 質數疊在舞台底部 */
+        #prime-container {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .prime-box {
+            padding: 4px 6px;
+            border-radius: 800px;
+            border: 2.5px solid #f7a34a;
+            background: #6082c4;
+            color: #fefce8;
+            font-size: 12px;
+            animation: pop-in 0.4s ease-out;
+        }
+
+        @keyframes pop-in {
+            0% {
+                transform: scale(0.3) translateY(10px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+
+
+        button {
+            margin: 0 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: none;
+            background: #6082c4;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id='titleName'>求出 1–100 的質數</h1>
+
+    <div>
+        <button type="button" id="btn_start">開始顯示質數</button>
+        <button type="button" id="btn_reset">清除重新開始</button>
+    </div>
+
+    <!-- 舞台：按開始時才會在這裡放 dotlottie-wc -->
+    <div class="stage" id="stage">
+        <div id="prime-container"></div>
+    </div>
+
+    <script>
+        // 1. 判斷是否為質數
+        function isPrime(n) {
+            if (n < 2) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        // 2. 先把 1–100 的質數存起來
+        const primes = [];
+        for (let n = 1; n <= 100; n++) {
+            if (isPrime(n)) {
+                primes.push(n);
+            }
+        }
+
+        const stage = document.getElementById('stage');
+        const container = document.getElementById('prime-container');
+        const btnStart = document.getElementById('btn_start');
+        const btnReset = document.getElementById('btn_reset');
+
+        let index = 0;      // 目前顯示到第幾個質數
+        let timerId = null; // 計時器編號
+
+        // 🔹 建立小人動畫元素（只在需要時建立）
+        function createLottieIfNeeded() {
+            let player = stage.querySelector('#person');
+            if (!player) {
+                player = document.createElement('dotlottie-wc');
+                player.setAttribute('src', 'https://lottie.host/e17c0b85-beb5-44e1-927b-af1e8e26c38b/HX72rw4AVH.lottie');
+                player.setAttribute('autoplay', '');
+                player.setAttribute('loop', '');
+                player.style.width = '100%';
+                player.style.height = '100%';
+                player.id = 'person';
+                // 放在 prime-container 前面，這樣質數會蓋在最上層
+                stage.insertBefore(player, container);
+            }
+        }
+
+        // 🔹 把小人動畫移除
+        function removeLottieIfExists() {
+            const player = stage.querySelector('#person');
+            if (player) {
+                stage.removeChild(player);
+            }
+        }
+
+        // 把煙火移除
+        function removefire() {
+            const fire = stage.querySelector('#fire');
+            if (fire) {
+                stage.removeChild(fire)
+            }
+        }
+
+        // 3. 顯示下一個質數
+        function showNextPrime() {
+            if (index >= primes.length) {
+                clearInterval(timerId);
+                timerId = null;
+                // btnStart.disabled = false;
+                container.innerHTML = ''; // 清空質數
+                index = 0;
+                removeLottieIfExists();   // 人消失
+                removeLottieIfExists();
+                createfire();
+                const title = document.getElementById('titleName');
+                title.textContent = '恭喜完成!';
+                return;
+
+            }
+
+            const span = document.createElement('span');
+            span.textContent = primes[index];
+            span.className = 'prime-box';
+            container.appendChild(span);
+
+            index++;
+        }
+
+        // 4. 開始按鈕：建立小人 + 開始依序顯示質數
+        btnStart.addEventListener('click', function () {
+            if (timerId !== null) return; // 已經在跑就不要重複
+
+            createLottieIfNeeded();  // 人出現
+
+            showNextPrime();         // 先顯示第一個
+            timerId = setInterval(showNextPrime, 400); // 之後每 0.5 秒一個
+            btnStart.disabled = true;
+        })
+
+
+        // 5. 清除按鈕：停掉計時器、清空質數、把人移除
+        btnReset.addEventListener('click', function () {
+            if (timerId !== null) {
+                clearInterval(timerId);
+                timerId = null;
+            }
+            container.innerHTML = ''; // 清空質數
+            index = 0;
+            btnStart.disabled = false;
+            removeLottieIfExists();   // 人消失
+            removefire();
+            document.getElementById('titleName').textContent = '求出 1–100 的質數';
+        });
+
+
+        //加入煙火:
+        function createfire() {
+            let fire = stage.querySelector('#fire');
+            if (!fire) {
+                fire = document.createElement('dotlottie-wc');
+                fire.setAttribute('src', 'https://lottie.host/e66e2d08-e237-423d-b511-0906f4f7bc44/uajsqXS5zs.lottie');
+                fire.setAttribute('autoplay', '');
+                fire.setAttribute('loop', '');
+                fire.id = 'fire';
+                fire.style.width = '100%';
+                fire.style.height = '100%';
+                // 放在 prime-container 前面，這樣質數會蓋在最上層
+                stage.insertBefore(fire, container);
+            }
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
